@@ -55,9 +55,6 @@ sub processCommand {
                         }
                         catch {
                           print "catch\n";
-                          # print WebTail::Dumper($self->read_handle);
-                          # $self->remove_from_parent;
-                          # $self->close;
                         }
                     }
                     return 0;

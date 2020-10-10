@@ -1,21 +1,13 @@
 package WebTail;
 use FindBin;
-
 use lib "$FindBin::Bin/./third/lib/perl5";
-
+use lib "$FindBin::Bin/.";
 use IO::Async::Loop;
-
 my $loop = IO::Async::Loop->new;
-
-# use local::lib './aa/lib/perl5';
 use Data::Dumper;
-
 use Net::Async::HTTP::Server;
 use WebTail;
 use Net::Async::WebSocket::Server;
-# use strict;
-
-# our $loop;
 
 my $server = Net::Async::WebSocket::Server->new(
     on_client => sub {
@@ -40,7 +32,6 @@ my $server = Net::Async::WebSocket::Server->new(
    );
 
 $loop->add( $server );
-
 $server->listen(
     service => 3000,
    )->get;

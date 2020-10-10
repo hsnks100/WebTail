@@ -1,0 +1,14 @@
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Client.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Cookie.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Cookie/Request.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Cookie/Response.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Frame.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Handshake.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Handshake/Client.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Handshake/Server.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Message.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Request.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Response.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/Stateful.pm
+/home/dire/workspace/WebTail/local/lib/perl5/Protocol/WebSocket/URL.pm

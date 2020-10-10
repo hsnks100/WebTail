@@ -1,8 +1,7 @@
 package WebTail;
 use FindBin;
-use lib "$FindBin::Bin/./third/lib/perl5";
+use lib "$FindBin::Bin/./local/lib/perl5";
 use lib "$FindBin::Bin/.";
-use lib "$FindBin::Bin/./third/lib/perl5/x86_64-linux-thread-multi/auto";
 use IO::Async::Loop;
 my $loop = IO::Async::Loop->new;
 use Data::Dumper;

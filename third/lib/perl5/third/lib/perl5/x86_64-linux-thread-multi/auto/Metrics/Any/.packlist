@@ -1,0 +1,9 @@
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/Adapter.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/Adapter/File.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/Adapter/Null.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/Adapter/Stderr.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/Adapter/Tee.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/Adapter/Test.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/AdapterBase/Stored.pm
+/home/dire/workspace/WebTail/third/lib/perl5/third/lib/perl5/Metrics/Any/Collector.pm

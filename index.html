@@ -1,0 +1,83 @@
+<html>
+  <head><script>
+
+      </script></head>
+  <style>
+
+
+    </style>
+  <body><h1>WebSocket client</h1></body>
+  <div id="root">
+    <ul id="example-1">
+        <li v-for="item in msg">
+        <!-- <a href="#">{{ item.message }}</a> -->
+        <button @click="onTail(item.message)">{{ item.message }}</button>
+        </li>
+    </ul>
+    <br>
+    <p v-html="logData"></p>
+
+  </div>
+</html>
+
+
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#root',
+        data: {
+            msg: [{'message':'test'}],
+            bd: '',
+            mySocket: null,
+            logData: '',
+        },
+
+        methods: {
+            onTail: function(event) {
+                console.log(event);
+                this.mySocket.send('tail,'+ event);
+            }
+        },
+        created: function () {
+            // `this` 는 vm 인스턴스를 가리킵니다.
+            console.log('a is: ' + this.msg);
+            this.a = 999;
+            var urlMySocket = "$ws_url";
+
+            var thiz = this;
+
+            thiz.mySocket = new WebSocket(urlMySocket);
+
+            thiz.mySocket.onmessage = function (evt) {
+                console.log( "Got message " + evt.data );
+                this.a = 'onlist!!!!!!!!!!!!!!1';
+                // document.body.innerHTML += evt.data + "</br >";
+                // thiz.bd += evt.data + '</ br>';
+                var commands = evt.data.split(",");
+
+                console.log("first command: ", commands[0], ", second commands: ", commands[1]);
+                if (commands[0] == "list") {
+                    var arrayCommands = commands[1].split('|');
+                    for (var i=0; i<arrayCommands.length; i++) {
+                        var dic = {'message':arrayCommands[i], 'etc': 'something'};
+                        this.a = 'onlist!!!!!!!!!!!!!!1';
+                        thiz.msg.push(dic);
+                    }
+                } else if(commands[0] == "data") {
+                    thiz.logData += commands[1] + '</br>';
+
+
+                }
+            };
+
+            thiz.mySocket.onopen = function(evt) {
+                console.log("opening");
+                thiz.mySocket.send('list,/home/dire/'); // /home/dire/workspace');
+                // setTimeout( function() {
+                //     mySocket.send('tail,/home/dire/workspace/aa.org'); }, 2000 );
+            };
+        } 
+    });
+  
+</script>

@@ -4,7 +4,6 @@ use IO::Async::Loop;
 use IO::Async::FileStream;
 use File::Tail;
 use strict;
-use IO::Async::Loop::Mojo;
 use Try::Catch;
 
 our $loop = IO::Async::Loop->new;

@@ -11,7 +11,7 @@ my $loop = IO::Async::Loop->new;
 use Data::Dumper;
 
 use Net::Async::HTTP::Server;
-# use WebTail;
+use WebTail;
 use Net::Async::WebSocket::Server;
 # use strict;
 

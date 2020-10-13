@@ -42,7 +42,6 @@ my $httpserver = Net::Async::HTTP::Server->new(
         my ( $req ) = @_;
 
         my $response = HTTP::Response->new( 200 );
-        my $ws_url = "ws://127.0.0.1:3000";
         my $filename = './index.html';
         open(FH, '<', $filename) or die $!;
         my $html = '';
@@ -50,7 +49,6 @@ my $httpserver = Net::Async::HTTP::Server->new(
             $html .= $_;
         }
         close(FH);
-        $html =~ s/\$ws_url/$ws_url/g;
         $response->add_content($html);
 
         $response->content_type( "text/html" );

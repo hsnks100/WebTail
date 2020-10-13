@@ -23,10 +23,15 @@ sub processCommand {
         opendir(DIR, $command2) or die $!;
 
         while (my $file = readdir(DIR)) {
-
-            # We only want files
-            next unless (-f "$command2/$file");
-            push(@files, "$command2/$file");
+            my $t = "$command2$file";
+            $t =~ s/\/\w+\/\.\.//g;
+            $t =~ s/\/\.//g;
+            # push(@files, "$t");
+            if (-f "$t") {
+                push(@files, "$t");
+            } else {
+                push(@files, "$t/");
+            }
         }
 
         closedir(DIR);

@@ -40,6 +40,11 @@ my $httpserver = Net::Async::HTTP::Server->new(
     on_request => sub {
         my $self = shift;
         my ( $req ) = @_;
+        my $path = $req->path;
+        print "path $path\n";
+        # print Dumper($req->path);
+
+
 
         my $response = HTTP::Response->new( 200 );
         my $filename = './index.html';
@@ -49,6 +54,7 @@ my $httpserver = Net::Async::HTTP::Server->new(
             $html .= $_;
         }
         close(FH);
+        $html =~ s/pathpath/$path/g;
         $response->add_content($html);
 
         $response->content_type( "text/html" );

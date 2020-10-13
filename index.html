@@ -37,7 +37,8 @@
           onTail: function(event) {
               console.log(event);
               if (event.charAt(event.length-1) == "/") {
-                  this.mySocket.send('list,'+ event);
+                  location.href=event;
+                  // this.mySocket.send('list,'+ event);
               } else {
                   this.mySocket.send('tail,'+ event);
               }
@@ -79,7 +80,7 @@
 
           thiz.mySocket.onopen = function(evt) {
               console.log("opening");
-              thiz.mySocket.send('list,/root/ws/'); // /home/dire/workspace');
+              thiz.mySocket.send('list,' + 'pathpath'); // /home/dire/'); // /home/dire/workspace');
               // setTimeout( function() {
               //     mySocket.send('tail,/home/dire/workspace/aa.org'); }, 2000 );
           };

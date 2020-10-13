@@ -25,7 +25,7 @@ sub processCommand {
         while (my $file = readdir(DIR)) {
             my $t = "$command2$file";
             $t =~ s/\/\w+\/\.\.//g;
-            $t =~ s/\/\.//g;
+            $t =~ s/\/\.$//g;
             # push(@files, "$t");
             if (-f "$t") {
                 push(@files, "$t");

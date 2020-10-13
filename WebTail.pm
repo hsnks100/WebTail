@@ -32,6 +32,7 @@ sub processCommand {
         closedir(DIR);
         my $ret = join "|", @files;
         $webs->send_text_frame($command1.",".$ret);
+        return undef;
     } elsif ($command1 eq "tail") {
         my @files2 = ();
         push(@files2, $command2);

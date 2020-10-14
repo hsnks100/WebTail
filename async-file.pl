@@ -8,6 +8,8 @@ use Data::Dumper;
 use Net::Async::HTTP::Server;
 use WebTail;
 use Net::Async::WebSocket::Server;
+use MIME::Base64;
+
 
 my $server = Net::Async::WebSocket::Server->new(
     on_client => sub {
@@ -41,11 +43,27 @@ my $httpserver = Net::Async::HTTP::Server->new(
         my $self = shift;
         my ( $req ) = @_;
         my $path = $req->path;
-        print "path $path\n";
-        # print Dumper($req->path);
-
-
-
+        # my $auth = $req->header; # authorization;
+        # print "path $path, $auth\n";
+        my @auth = split /Basic /, $req->header('authorization');
+        my $authFailer = sub {
+            my $response = HTTP::Response->new( 401 );
+            $response->add_content("auth req");
+            $response->header( "WWW-Authenticate" => "basic realm=\"localhost\"" );
+            $response->content_type( "text/html" );
+            $response->content_length( length $response->content ); 
+            $req->respond( $response ); 
+        };
+        if (scalar @auth != 2) {
+            &$authFailer();
+            return;
+        }
+        $decoded = decode_base64($auth[1]); 
+        print "\ndec $decoded\n";
+        if ($decoded ne "rufree:1") {
+            &$authFailer();
+            return;
+        }
         my $response = HTTP::Response->new( 200 );
         my $filename = './index.html';
         open(FH, '<', $filename) or die $!;
@@ -55,11 +73,9 @@ my $httpserver = Net::Async::HTTP::Server->new(
         }
         close(FH);
         $html =~ s/pathpath/$path/g;
-        $response->add_content($html);
-
+        $response->add_content($html); 
         $response->content_type( "text/html" );
-        $response->content_length( length $response->content );
-
+        $response->content_length( length $response->content ); 
         $req->respond( $response );
     },
    );
